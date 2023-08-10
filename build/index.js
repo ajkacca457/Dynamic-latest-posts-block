@@ -37,7 +37,8 @@ function Edit({
   setAttributes
 }) {
   const {
-    numberOfPosts
+    numberOfPosts,
+    displayThumbnail
   } = attributes;
   const posts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => {
     return select('core').getEntityRecords('postType', 'post', {
@@ -49,20 +50,26 @@ function Edit({
   console.log(posts);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Latest Posts Settings', 'dynamic-latest-posts-block')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.__experimentalNumberControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Number of Posts', 'dynamic-latest-posts-block'),
-    value: numberOfPosts,
-    onChange: numberOfPosts => setAttributes({
-      numberOfPosts
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.QueryControls, {
+    numberOfItems: numberOfPosts,
+    onNumberOfItemsChange: newNumber => setAttributes({
+      numberOfPosts: newNumber
     }),
-    min: 1
+    minItems: 1,
+    maxItems: 100
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Display Image", "dynamic-latest-posts-block"),
+    checked: displayThumbnail,
+    onChange: newDisplayThumbnail => setAttributes({
+      displayThumbnail: newDisplayThumbnail
+    })
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Latest Posts', 'dynamic-latest-posts-block')), posts && posts.map(post => {
     const featuredImage = post?._embedded['wp:featuredmedia']?.[0]?.media_details?.sizes?.large?.source_url;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, post.title && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: post.link
-    }, post.title.raw)), post.excerpt && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, post.excerpt.raw), featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    }, post.title.raw)), post.excerpt && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, post.excerpt.raw), displayThumbnail && featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: featuredImage,
       alt: post.title.raw
     }), post.date && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, moment__WEBPACK_IMPORTED_MODULE_5___default()(post.date).format('MMMM Do YYYY, h:mm:ss a')));
