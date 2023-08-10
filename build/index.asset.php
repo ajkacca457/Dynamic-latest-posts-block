@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('moment', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-data', 'wp-element', 'wp-i18n'), 'version' => '58a991b782934c41992d');
+<?php return array('dependencies' => array('moment', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-data', 'wp-element', 'wp-i18n'), 'version' => 'cd53796bae6d4f64d615');

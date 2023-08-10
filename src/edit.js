@@ -7,14 +7,12 @@ import { PanelBody, QueryControls, ToggleControl } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
 
-	const { numberOfPosts, displayThumbnail } = attributes;
+	const { numberOfPosts, displayThumbnail, order, orderBy } = attributes;
 
 	const posts = useSelect((select) => {
-		return select('core').getEntityRecords('postType', 'post', { per_page: numberOfPosts, _embed: true, order: 'asc' });
-	}, [numberOfPosts]
+		return select('core').getEntityRecords('postType', 'post', { per_page: numberOfPosts, _embed: true, order: order, orderby: orderBy });
+	}, [numberOfPosts, order, orderBy]
 	);
-
-	console.log(posts);
 
 	return (
 		<>
@@ -25,6 +23,10 @@ export default function Edit({ attributes, setAttributes }) {
 						onNumberOfItemsChange={(newNumber) => setAttributes({ numberOfPosts: newNumber })}
 						minItems={1}
 						maxItems={100}
+						order={order}
+						onOrderChange={(newOrder) => setAttributes({ order: newOrder })}
+						orderBy={orderBy}
+						onOrderByChange={(newOrderBy) => setAttributes({ orderBy: newOrderBy })}
 					/>
 
 					<ToggleControl

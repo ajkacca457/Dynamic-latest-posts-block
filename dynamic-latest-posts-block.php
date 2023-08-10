@@ -27,8 +27,8 @@ function dynamic_latest_posts_block_render_callback($attributes) {
 	$args = array(
 		'post_type' => 'post',
 		'posts_per_page' => $attributes['numberOfPosts'],
-		'orderby' => 'date',
-		'order' => 'ASC',
+		'orderby' => $attributes['orderBy'],
+		'order' => $attributes['order']
 	);
 
 	$recent_posts = get_posts($args);

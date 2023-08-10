@@ -38,16 +38,18 @@ function Edit({
 }) {
   const {
     numberOfPosts,
-    displayThumbnail
+    displayThumbnail,
+    order,
+    orderBy
   } = attributes;
   const posts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => {
     return select('core').getEntityRecords('postType', 'post', {
       per_page: numberOfPosts,
       _embed: true,
-      order: 'asc'
+      order: order,
+      orderby: orderBy
     });
-  }, [numberOfPosts]);
-  console.log(posts);
+  }, [numberOfPosts, order, orderBy]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Latest Posts Settings', 'dynamic-latest-posts-block')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.QueryControls, {
@@ -56,7 +58,15 @@ function Edit({
       numberOfPosts: newNumber
     }),
     minItems: 1,
-    maxItems: 100
+    maxItems: 100,
+    order: order,
+    onOrderChange: newOrder => setAttributes({
+      order: newOrder
+    }),
+    orderBy: orderBy,
+    onOrderByChange: newOrderBy => setAttributes({
+      orderBy: newOrderBy
+    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Display Image", "dynamic-latest-posts-block"),
     checked: displayThumbnail,
@@ -267,7 +277,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/dynamic-latest-posts-block","version":"0.1.0","title":"Dynamic Latest Posts Block","category":"widgets","icon":"rss","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"attributes":{"numberOfPosts":{"type":"number","default":5},"displayThumbnail":{"type":"boolean","default":true}},"keywords":["dynamic-block","latest-posts","live-feed"],"textdomain":"dynamic-latest-posts-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/dynamic-latest-posts-block","version":"0.1.0","title":"Dynamic Latest Posts Block","category":"widgets","icon":"rss","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"attributes":{"numberOfPosts":{"type":"number","default":5},"displayThumbnail":{"type":"boolean","default":true},"order":{"type":"string","default":"asc"},"orderBy":{"type":"string","default":"date"}},"keywords":["dynamic-block","latest-posts","live-feed"],"textdomain":"dynamic-latest-posts-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
