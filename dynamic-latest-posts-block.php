@@ -32,13 +32,14 @@ function dynamic_latest_posts_block_render_callback($attributes) {
 	);
 
 	$recent_posts = get_posts($args);
-
 	$posts = "<div>";
+	$posts .= "<h2>Latest Posts</h2>";
 
 	foreach ($recent_posts as $post) {
+		$permalink = get_permalink($post->ID);
 		$post_title = $post->post_title ? $post->post_title : "No title";
 		$post_excerpt = $post->post_excerpt ? $post->post_excerpt : "No excerpt";
-		$posts .= "<h2>" . $post_title . "</h2>";
+		$posts .= '<h3><a href="' . esc_url($permalink) . '">' . $post_title . "</a></h3>";
 		$posts .= "<p>" . $post_excerpt . "</p>";
 	}
 	$posts .= "</div>";
