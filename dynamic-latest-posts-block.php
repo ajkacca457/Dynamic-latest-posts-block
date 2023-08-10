@@ -23,10 +23,27 @@
  */
 
 function dynamic_latest_posts_block_render_callback($attributes) {
-	echo '<pre>';
-	var_dump($attributes);
-	echo '</pre>';
-	return "Hello World";
+
+	$args = array(
+		'post_type' => 'post',
+		'posts_per_page' => $attributes['numberOfPosts'],
+		'orderby' => 'date',
+		'order' => 'ASC',
+	);
+
+	$recent_posts = get_posts($args);
+
+	$posts = "<div>";
+
+	foreach ($recent_posts as $post) {
+		$post_title = $post->post_title ? $post->post_title : "No title";
+		$post_excerpt = $post->post_excerpt ? $post->post_excerpt : "No excerpt";
+		$posts .= "<h2>" . $post_title . "</h2>";
+		$posts .= "<p>" . $post_excerpt . "</p>";
+	}
+	$posts .= "</div>";
+
+	return $posts;
 }
 
 function create_block_dynamic_latest_posts_block_block_init() {
