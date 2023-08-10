@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/dynamic-latest-posts-block",
+	"version": "0.1.0",
+	"title": "Dynamic Latest Posts Block",
+	"category": "widgets",
+	"icon": "rss",
+	"description": "Example block scaffolded with Create Block tool.",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"numberOfPosts": {
+			"type": "number",
+			"default": 5
+		}
+	},
+	"keywords": [ "dynamic-block", "latest-posts", "live-feed" ],
+	"textdomain": "dynamic-latest-posts-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}
