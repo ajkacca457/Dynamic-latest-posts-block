@@ -40,7 +40,11 @@ function dynamic_latest_posts_block_render_callback($attributes) {
 		$post_title = $post->post_title ? $post->post_title : "No title";
 		$post_excerpt = $post->post_excerpt ? $post->post_excerpt : "No excerpt";
 		$posts .= '<h3><a href="' . esc_url($permalink) . '">' . $post_title . "</a></h3>";
+		if ($attributes['displayThumbnail'] && has_post_thumbnail($post->ID)) {
+			$posts .= get_the_post_thumbnail($post->ID, 'large');
+		}
 		$posts .= "<p>" . $post_excerpt . "</p>";
+		$posts .= "<p>" . get_the_date('F j, Y', $post->ID) . "</p>";
 	}
 	$posts .= "</div>";
 
