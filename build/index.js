@@ -21,6 +21,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -46,7 +49,7 @@ function Edit({
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Latest Posts', 'dynamic-latest-posts-block')), posts && posts.map(post => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, post.title && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: post.link
-    }, post.title.raw)), post.excerpt && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, post.excerpt.raw));
+    }, post.title.raw)), post.excerpt && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, post.excerpt.raw), post.date && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, moment__WEBPACK_IMPORTED_MODULE_5___default()(post.date).format('MMMM Do YYYY, h:mm:ss a')));
   }))));
 }
 
@@ -162,6 +165,16 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "moment":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/***/ ((module) => {
+
+module.exports = window["moment"];
 
 /***/ }),
 

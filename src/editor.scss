@@ -4,6 +4,11 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-dynamic-latest-posts-block {
-	border: 1px dotted #f00;
+.block-editor-block-list__block {
+	h3 {
+		a {
+			color: white !important;
+			text-decoration: none;
+		}
+	}
 }

@@ -2,6 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
 import './editor.scss';
 import { useSelect } from '@wordpress/data';
+import moment from 'moment';
 
 export default function Edit({ attributes, setAttributes }) {
 
@@ -24,6 +25,7 @@ export default function Edit({ attributes, setAttributes }) {
 							<>
 								{post.title && <h3><a href={post.link}>{post.title.raw}</a></h3>}
 								{post.excerpt && <p>{post.excerpt.raw}</p>}
+								{post.date && <p>{moment(post.date).format('MMMM Do YYYY, h:mm:ss a')}</p>}
 							</>
 						);
 					})}
