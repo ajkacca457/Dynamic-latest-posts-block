@@ -32,7 +32,7 @@ function dynamic_latest_posts_block_render_callback($attributes) {
 	);
 
 	$recent_posts = get_posts($args);
-	$posts = "<div class='wp-block-create-block-dynamic-latest-posts-block'>";
+	$posts = "<div class='dynamic-latest-posts-block'>";
 	$posts .= "<h2>Latest Posts</h2>";
 
 	foreach ($recent_posts as $post) {
