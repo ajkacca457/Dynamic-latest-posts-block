@@ -7,16 +7,19 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.wp-block-create-block-dynamic-latest-posts-block {
+  max-width: 1400px;
+}
+
 .wp-block-post-content {
-  background-color: #21759b;
-  color: #fff;
   padding: 2px;
+  color: black;
 }
 .wp-block-post-content h3 {
   margin: 10px auto;
 }
 .wp-block-post-content h3 a {
-  color: #fff;
+  color: #a42121 !important;
   text-decoration: none;
 }
 .wp-block-post-content h3:after {
@@ -24,7 +27,6 @@
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #fff;
   margin: 10px auto;
 }
 

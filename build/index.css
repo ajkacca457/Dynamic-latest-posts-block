@@ -6,8 +6,13 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.wp-block-create-block-dynamic-latest-posts-block {
+  max-width: 1400px;
+  margin: auto;
+}
+
 .block-editor-block-list__block h3 a {
-  color: white !important;
+  color: #a42121 !important;
   text-decoration: none;
 }
 
